@@ -76,6 +76,16 @@ public class BookmakerTest {
 		assertEquals(normalize(expected), normalize(actual));
 	}
 
+	@Test
+	public void testWithTestAI() {
+		main(new String[] { "-a", "\"java TestAI -c L R N U L L\"", "-a", "\"java TestAI -c N U A\"", "-a",
+				"\"java TestAI -c L A N U L L\"", "-a", "\"java SampleAI -s 0\"", "-s", "0", "-t", "30" });
+		System.out.flush();
+		String expected = getFileContents(new File("fixture/testWithTestAI.txt"));
+		String actual = _sysout.toString();
+		assertEquals(normalize(expected), normalize(actual));
+	}
+
 	private void main(String[] args) {
 		Options options = Bookmaker.buildOptions();
 
